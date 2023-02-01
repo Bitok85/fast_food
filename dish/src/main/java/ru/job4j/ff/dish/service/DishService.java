@@ -1,6 +1,6 @@
-package ru.job4j_fast_food.dish.service;
+package ru.job4j.ff.dish.service;
 
-import ru.job4j_fast_food.domain.Dish;
+import ru.job4j.ff.domain.model.Dish;
 
 public interface DishService {
 
