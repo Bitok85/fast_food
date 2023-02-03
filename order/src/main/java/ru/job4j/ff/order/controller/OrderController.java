@@ -5,10 +5,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
-import ru.job4j.ff.order.error.CardCreationException;
-import ru.job4j.ff.order.error.OrderCreationException;
 import ru.job4j.ff.order.service.OrderService;
 import ru.job4j.ff.domain.dto.OrderDTO;
 import ru.job4j.ff.domain.model.Customer;
@@ -51,10 +48,7 @@ public class OrderController {
     @PostMapping
     public ResponseEntity<HttpStatus> createOrder(@RequestBody @Valid OrderDTO orderDTO,
                                                   BindingResult bindingResult) {
-        String errorMsg = CheckBindResult.check(bindingResult);
-        if (!errorMsg.isEmpty()) {
-            throw new OrderCreationException(errorMsg);
-        }
+        CheckBindResult.check(bindingResult);
         orderService.createOrder(convertToOrder(orderDTO));
         return ResponseEntity.ok(HttpStatus.OK);
     }
