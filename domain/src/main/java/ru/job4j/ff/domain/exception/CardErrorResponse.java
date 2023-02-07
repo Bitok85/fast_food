@@ -1,7 +1,8 @@
-package ru.job4j.ff.order.error;
+package ru.job4j.ff.domain.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+
 
 @Data
 @AllArgsConstructor

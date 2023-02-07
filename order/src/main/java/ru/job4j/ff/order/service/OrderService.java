@@ -5,7 +5,7 @@ import ru.job4j.ff.order.repository.OrderRepository;
 import ru.job4j.ff.domain.model.Customer;
 import ru.job4j.ff.domain.model.Order;
 import ru.job4j.ff.order.repository.StatusRepository;
-import ru.job4j.ff.order.error.OrderNotFoundException;
+import ru.job4j.ff.domain.exception.OrderNotFoundException;
 
 
 import java.util.List;
