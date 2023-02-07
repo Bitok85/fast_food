@@ -2,15 +2,21 @@ package ru.job4j.ff.dish.service;
 
 import ru.job4j.ff.domain.model.Dish;
 
+import java.util.List;
+
 public interface DishService {
 
     void addDish(Dish dish);
 
-    Dish removeDish(String dishName);
+    Dish findDishById(int id);
 
-    void addDishPrice(int id, float price);
+    Dish findDishByName(String name);
 
-    float changeDishPrice(int id, float price);
+    Dish updateDish(Dish dish);
 
-    boolean checkAvailability(String dishName);
+    int cockingTime(String name);
+
+    boolean deleteDish(String name);
+
+    List<Dish> findAll();
 }
