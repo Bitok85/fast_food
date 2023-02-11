@@ -1,25 +1,54 @@
 package ru.job4j.ff.domain.model;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@Builder
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Entity
+@Table(name = "orders")
 public class Order {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private int id;
 
+    @Min(value = 0, message = "Order amount couldn't be less then null")
+    private float amount;
+
     private String address;
 
-    private List<Dish> dishList;
+    @ToString.Exclude
+    @ManyToMany(mappedBy = "orders", fetch = FetchType.LAZY)
+    private Set<Dish> dishes = new HashSet<>();
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+    private Customer customer;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "courier_id", referencedColumnName = "id")
+    private Courier courier;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "card_id", referencedColumnName = "id")
+    private Card card;
+
+    @Enumerated(EnumType.STRING)
     private Status status;
 
-    private LocalDateTime created = LocalDateTime.now();
+    @Column(name = "created_at")
+    private LocalDateTime createdAt = LocalDateTime.now();
 }

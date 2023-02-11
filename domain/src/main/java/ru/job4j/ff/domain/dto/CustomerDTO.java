@@ -1,30 +1,42 @@
 package ru.job4j.ff.domain.dto;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.*;
+import java.util.Date;
 
 @Data
+@Builder
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class CustomerDTO {
 
     @NotEmpty(message = "Name shouldn't be empty")
     @Size(min = 2, max = 30, message = "Name should be between 2 and 30 characters")
     private String name;
 
+    @NotEmpty
+    @Size(min = 2, max = 30, message = "Login should be between 2 and 30 characters")
+    private String login;
+
     @NotEmpty(message = "Surname shouldn't be empty")
     @Size(min = 2, max = 30, message = "Surname should be between 2 and 30 characters")
     private String surname;
 
-    @Min(value = 0, message = "Age should be greater then 0")
-    private int age;
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private Date age;
 
+    @EqualsAndHashCode.Include
     @Email
     @NotEmpty(message = "Email should not be empty")
     private String email;
 
-    @NotEmpty(message = "Phone number should not be empty")
+    @EqualsAndHashCode.Include
+    @Pattern(regexp = "(\\+7|0)[0-9]{9}")
     private String phoneNumber;
 }

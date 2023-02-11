@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.job4j.ff.domain.mapper.OrderMapper;
+import ru.job4j.ff.domain.model.Status;
 import ru.job4j.ff.order.service.OrderService;
 import ru.job4j.ff.domain.dto.OrderDTO;
 import ru.job4j.ff.domain.model.Customer;
@@ -32,8 +33,8 @@ public class OrderController {
     }
 
     @GetMapping("/{id}/status")
-    public ResponseEntity<Boolean> orderReadiness(@PathVariable("id") int id) {
-        boolean status = orderService.orderReadiness(id);
+    public ResponseEntity<Status> orderStatus(@PathVariable("id") int id) {
+        Status status = orderService.orderStatus(id);
         return new ResponseEntity<>(status, HttpStatus.OK);
     }
 

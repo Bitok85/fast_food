@@ -1,10 +1,10 @@
 package ru.job4j.ff.order.service;
 
 import org.springframework.stereotype.Service;
+import ru.job4j.ff.domain.model.Status;
 import ru.job4j.ff.order.repository.OrderRepository;
 import ru.job4j.ff.domain.model.Customer;
 import ru.job4j.ff.domain.model.Order;
-import ru.job4j.ff.order.repository.StatusRepository;
 import ru.job4j.ff.domain.exception.OrderNotFoundException;
 
 
@@ -15,8 +15,6 @@ import java.util.NoSuchElementException;
 public class OrderService {
 
     private OrderRepository orderRepository;
-
-    private StatusRepository statusRepository;
 
     public Order findOrderById(int id) {
         return orderRepository.findById(id).orElseThrow(
@@ -34,9 +32,8 @@ public class OrderService {
         orderRepository.save(order);
     }
 
-    public boolean orderReadiness(int id) {
-        return statusRepository.findById(id).orElseThrow(
-                () -> new NoSuchElementException("Order has no status")
-        ).isReadiness();
+    public Status orderStatus(int id) {
+        return orderRepository.findById(id).orElseThrow()
+                .getStatus();
     }
 }
