@@ -12,7 +12,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Data
-@Builder
 @EqualsAndHashCode(onlyExplicitlyIncluded = false)
 public class CourierDTO {
 

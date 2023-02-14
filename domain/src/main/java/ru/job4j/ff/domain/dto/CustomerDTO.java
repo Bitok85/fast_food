@@ -11,7 +11,6 @@ import javax.validation.constraints.*;
 import java.util.Date;
 
 @Data
-@Builder
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class CustomerDTO {
 

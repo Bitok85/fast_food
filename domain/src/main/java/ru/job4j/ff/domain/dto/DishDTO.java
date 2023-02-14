@@ -10,7 +10,6 @@ import javax.validation.constraints.Size;
 import java.util.List;
 
 @Data
-@Builder
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class DishDTO {
 

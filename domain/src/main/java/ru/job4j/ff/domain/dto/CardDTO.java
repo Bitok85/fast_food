@@ -14,7 +14,6 @@ import java.util.Date;
 import java.util.Set;
 
 @Data
-@Builder
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class CardDTO {
 
