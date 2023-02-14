@@ -1,10 +1,7 @@
 package ru.job4j.ff.domain.dto;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
 import ru.job4j.ff.domain.model.Status;
 
 import javax.validation.constraints.Min;

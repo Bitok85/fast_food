@@ -9,6 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface CardRepository extends CrudRepository<Card, Integer> {
-    Optional<Card> findByCustomer(Customer customer);
 
 }

@@ -1,20 +1,20 @@
 package ru.job4j.ff.order.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.job4j.ff.domain.model.Status;
-import ru.job4j.ff.order.repository.OrderRepository;
+import ru.job4j.ff.domain.exception.OrderNotFoundException;
 import ru.job4j.ff.domain.model.Customer;
 import ru.job4j.ff.domain.model.Order;
-import ru.job4j.ff.domain.exception.OrderNotFoundException;
-
+import ru.job4j.ff.domain.model.Status;
+import ru.job4j.ff.order.repository.OrderRepository;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @Service
+@RequiredArgsConstructor
 public class OrderService {
 
-    private OrderRepository orderRepository;
+    private final OrderRepository orderRepository;
 
     public Order findOrderById(int id) {
         return orderRepository.findById(id).orElseThrow(

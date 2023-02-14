@@ -24,12 +24,9 @@ public class Notification {
     private int orderNumber;
 
     @Column(name = "order_created_at")
-    private LocalDateTime createdAt;
+    private LocalDateTime orderCreatedAt;
 
     private String status;
     private String message;
-
-
-
 
 }

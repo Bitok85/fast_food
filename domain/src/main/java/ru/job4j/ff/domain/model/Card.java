@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -37,5 +38,5 @@ public class Card {
     private Date expiresAt;
 
     @OneToMany(mappedBy = "card", cascade = CascadeType.ALL)
-    private Set<Customer> customers;
+    private Set<Customer> customers = new HashSet<>();
 }

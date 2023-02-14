@@ -5,9 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -30,7 +28,6 @@ public class Order {
 
     private String address;
 
-    @ToString.Exclude
     @ManyToMany(mappedBy = "orders", fetch = FetchType.LAZY)
     private Set<Dish> dishes = new HashSet<>();
 
@@ -50,5 +47,5 @@ public class Order {
     private Status status;
 
     @Column(name = "created_at")
-    private LocalDateTime createdAt = LocalDateTime.now();
+    private LocalDateTime createdAt;
 }
