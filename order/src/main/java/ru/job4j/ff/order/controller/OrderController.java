@@ -27,7 +27,6 @@ public class OrderController {
 
     private final OrderMapper orderMapper;
 
-    private final OrderKafkaProducer orderKafkaProducer;
 
     @GetMapping("/{id}")
     public ResponseEntity<OrderDTO> findOrderById(@PathVariable("id") int id) {
@@ -48,14 +47,11 @@ public class OrderController {
                 .collect(Collectors.toList());
     }
 
-
     @PostMapping
     public ResponseEntity<HttpStatus> createOrder(@RequestBody @Valid OrderDTO orderDTO,
                                                   BindingResult bindingResult) {
         CheckBindResult.check(bindingResult);
-        Order order = orderMapper.toModel(orderDTO);
-        orderService.createOrder(order);
-        orderKafkaProducer.sendOrder(order);
+        orderService.createOrder(orderMapper.toModel(orderDTO));
         return ResponseEntity.ok(HttpStatus.OK);
     }
 }

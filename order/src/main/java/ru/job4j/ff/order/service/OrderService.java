@@ -16,6 +16,8 @@ public class OrderService {
 
     private final OrderRepository orderRepository;
 
+    private final OrderKafkaProducer orderKafkaProducer;
+
     public Order findOrderById(int id) {
         return orderRepository.findById(id).orElseThrow(
                 () -> new OrderNotFoundException(
@@ -30,6 +32,7 @@ public class OrderService {
 
     public void createOrder(Order order) {
         orderRepository.save(order);
+        orderKafkaProducer.sendOrder(order);
     }
 
     public Status orderStatus(int id) {
