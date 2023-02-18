@@ -18,6 +18,8 @@ public class OrderService {
 
     private final OrderKafkaProducer orderKafkaProducer;
 
+    private final OrderKafkaConsumer orderKafkaConsumer;
+
     public Order findOrderById(int id) {
         return orderRepository.findById(id).orElseThrow(
                 () -> new OrderNotFoundException(
@@ -31,8 +33,16 @@ public class OrderService {
     }
 
     public void createOrder(Order order) {
-        orderRepository.save(order);
-        orderKafkaProducer.sendOrder(order);
+        try {
+            orderRepository.save(order);
+            order.setStatus(Status.CREATED);
+            orderKafkaProducer.sendOrderToKitchen(order);
+            Order cookedOrder = orderKafkaConsumer.consumeOrderFromKitchen(order);
+            orderRepository.save(cookedOrder);
+            orderKafkaProducer.sendOrderToNotification(cookedOrder);
+        } catch (Exception e) {
+            throw new RuntimeException("Creating order error", e);
+        }
     }
 
     public Status orderStatus(int id) {

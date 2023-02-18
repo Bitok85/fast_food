@@ -1,4 +1,4 @@
-package ru.job4j.ff.order.config;
+package ru.job4j.ff.kitchen.configuration;
 
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.context.annotation.Bean;
@@ -6,16 +6,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.TopicBuilder;
 
 @Configuration
-public class KafkaTopicConfig {
+public class KitchenKafkaTopicConfig {
 
     @Bean
-    public NewTopic newOrder() {
-        return TopicBuilder.name("newOrder")
-                .build();
-    }
-
-    @Bean NewTopic newCard() {
-        return TopicBuilder.name("newCard")
+    public NewTopic cookedOrder() {
+        return TopicBuilder.name("cookedOrder")
                 .build();
     }
 }

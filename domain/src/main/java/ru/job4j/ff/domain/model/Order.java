@@ -5,8 +5,9 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Getter
 @Setter
@@ -28,7 +29,7 @@ public class Order {
     private String address;
 
     @ManyToMany(mappedBy = "orders", fetch = FetchType.LAZY)
-    private Set<Dish> dishes = new HashSet<>();
+    private List<Dish> dishList = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id", referencedColumnName = "id")

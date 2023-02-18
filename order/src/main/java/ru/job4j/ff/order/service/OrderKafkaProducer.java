@@ -16,10 +16,18 @@ public class OrderKafkaProducer {
         this.orderKafkaTemplate = orderKafkaTemplate;
     }
 
-    public void sendOrder(Order order) {
+    public void sendOrderToNotification(Order order) {
         Message<Order> message = MessageBuilder
                 .withPayload(order)
                 .setHeader(KafkaHeaders.TOPIC, "newOrder")
+                .build();
+        orderKafkaTemplate.send(message);
+    }
+
+    public void sendOrderToKitchen(Order order) {
+        Message<Order> message = MessageBuilder
+                .withPayload(order)
+                .setHeader(KafkaHeaders.TOPIC, "preorder")
                 .build();
         orderKafkaTemplate.send(message);
     }

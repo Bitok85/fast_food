@@ -1,7 +1,6 @@
 package ru.job4j.ff.domain.mapper;
 
 import org.mapstruct.Mapper;
-import org.springframework.stereotype.Component;
 import ru.job4j.ff.domain.dto.OrderDTO;
 import ru.job4j.ff.domain.model.Order;
 
