@@ -8,7 +8,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
-import ru.job4j.ff.domain.dto.DishDTO;
+import ru.job4j.ff.dish.dto.DishDTO;
 
 import java.util.Collections;
 import java.util.List;

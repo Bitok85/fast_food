@@ -6,9 +6,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.job4j.ff.dish.service.StandardDishService;
-import ru.job4j.ff.domain.dto.DishDTO;
-import ru.job4j.ff.domain.exception.util.CheckBindResult;
-import ru.job4j.ff.domain.mapper.DishMapper;
+import ru.job4j.ff.dish.dto.DishDTO;
+import ru.job4j.ff.dish.dto.DishMapper;
+import ru.job4j.ff.dish.util.exception.CheckBindResult;
 import ru.job4j.ff.domain.model.Dish;
 
 import javax.validation.Valid;

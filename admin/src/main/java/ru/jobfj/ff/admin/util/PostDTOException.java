@@ -1,4 +1,4 @@
-package ru.job4j.ff.domain.exception;
+package ru.jobfj.ff.admin.util;
 
 public class PostDTOException extends RuntimeException {
 

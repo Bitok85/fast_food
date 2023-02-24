@@ -1,7 +1,6 @@
-package ru.job4j.ff.domain.mapper;
+package ru.job4j.ff.order.dto;
 
 import org.mapstruct.Mapper;
-import ru.job4j.ff.domain.dto.CardDTO;
 import ru.job4j.ff.domain.model.Card;
 
 @Mapper(componentModel = "spring")

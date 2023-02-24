@@ -5,13 +5,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import ru.job4j.ff.domain.dto.OrderDTO;
-import ru.job4j.ff.domain.exception.util.CheckBindResult;
-import ru.job4j.ff.domain.mapper.OrderMapper;
+import ru.job4j.ff.order.dto.OrderDTO;
+import ru.job4j.ff.order.util.exception.CheckBindResult;
+import ru.job4j.ff.order.dto.OrderMapper;
 import ru.job4j.ff.domain.model.Customer;
 import ru.job4j.ff.domain.model.Order;
 import ru.job4j.ff.domain.model.Status;
-import ru.job4j.ff.order.service.OrderKafkaProducer;
 import ru.job4j.ff.order.service.OrderService;
 
 import javax.validation.Valid;

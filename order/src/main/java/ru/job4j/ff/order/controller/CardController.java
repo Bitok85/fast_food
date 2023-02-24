@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.job4j.ff.domain.dto.CardDTO;
-import ru.job4j.ff.domain.exception.util.CheckBindResult;
-import ru.job4j.ff.domain.mapper.CardMapper;
+import ru.job4j.ff.order.dto.CardDTO;
+import ru.job4j.ff.order.util.exception.CheckBindResult;
+import ru.job4j.ff.order.dto.CardMapper;
 import ru.job4j.ff.order.service.CardService;
 
 import javax.validation.Valid;

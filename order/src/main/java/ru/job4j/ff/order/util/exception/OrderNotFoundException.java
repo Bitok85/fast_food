@@ -1,4 +1,4 @@
-package ru.job4j.ff.domain.exception;
+package ru.job4j.ff.order.util.exception;
 
 public class OrderNotFoundException extends RuntimeException {
 

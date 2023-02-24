@@ -2,7 +2,7 @@ package ru.job4j.ff.dish.service;
 
 import org.springframework.stereotype.Service;
 import ru.job4j.ff.dish.repository.DishRepository;
-import ru.job4j.ff.domain.exception.DishNotFoundException;
+import ru.job4j.ff.dish.util.exception.DishNotFoundException;
 import ru.job4j.ff.domain.model.Dish;
 
 import java.util.List;

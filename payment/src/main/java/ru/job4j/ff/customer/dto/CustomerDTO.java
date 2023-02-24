@@ -1,6 +1,6 @@
-package ru.job4j.ff.domain.dto;
+package ru.job4j.ff.customer.dto;
 
-import lombok.Builder;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.format.annotation.DateTimeFormat;

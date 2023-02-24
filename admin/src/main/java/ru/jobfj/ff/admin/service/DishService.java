@@ -2,8 +2,7 @@ package ru.jobfj.ff.admin.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.job4j.ff.domain.dto.DishDTO;
-import ru.job4j.ff.domain.model.Dish;
+import ru.job4j.ff.dish.dto.DishDTO;
 import ru.jobfj.ff.admin.repository.DishAPIRepository;
 
 import java.util.List;

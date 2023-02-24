@@ -1,4 +1,4 @@
-package ru.job4j.ff.domain.exception;
+package ru.job4j.ff.dish.util.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package ru.job4j.ff.domain.util;
+package ru.jobfj.ff.admin.util;
 
 
 import java.util.regex.Pattern;

@@ -1,9 +1,9 @@
-package ru.job4j.ff.domain.dto;
+package ru.job4j.ff.delivery.dto;
 
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import ru.job4j.ff.order.dto.OrderDTO;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;

@@ -1,4 +1,4 @@
-package ru.job4j.ff.domain.dto;
+package ru.job4j.ff.dish.dto;
 
 import lombok.Builder;
 import lombok.Data;

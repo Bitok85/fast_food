@@ -11,9 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import ru.job4j.ff.domain.dto.DishDTO;
-import ru.job4j.ff.domain.exception.util.CheckBindResult;
+import ru.job4j.ff.dish.dto.DishDTO;
 import ru.jobfj.ff.admin.service.DishService;
+import ru.jobfj.ff.admin.util.CheckBindResult;
 
 import javax.validation.Valid;
 import java.io.IOException;
