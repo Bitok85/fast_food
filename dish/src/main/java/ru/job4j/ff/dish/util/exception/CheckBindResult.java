@@ -1,8 +1,7 @@
-package ru.job4j.ff.domain.exception.util;
+package ru.job4j.ff.dish.util.exception;
 
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import ru.job4j.ff.domain.exception.PostDTOException;
 
 import java.util.List;
 
