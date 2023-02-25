@@ -3,7 +3,6 @@ package ru.job4j.ff.delivery.dto;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import ru.job4j.ff.order.dto.OrderDTO;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
@@ -29,5 +28,5 @@ public class CourierDTO {
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    private Set<OrderDTO> orderDTOs = new HashSet<>();
+    private Set<Integer> orderIds = new HashSet<>();
 }
