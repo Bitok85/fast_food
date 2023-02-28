@@ -1,15 +1,10 @@
 package ru.job4j.ff.kitchen.service;
 
-import com.mongodb.MongoException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ru.job4j.ff.domain.model.Order;
 import ru.job4j.ff.domain.model.Status;
-import ru.job4j.ff.kitchen.model.KitchenOrder;
-import ru.job4j.ff.kitchen.repository.KitchenOrderRepository;
-
-import java.util.ArrayList;
 
 
 @Service
@@ -17,7 +12,6 @@ import java.util.ArrayList;
 @Slf4j
 public class KitchenOrderService {
 
-    private final KitchenOrderRepository store;
     private final KitchenKafkaConsumer kitchenKafkaConsumer;
 
     private final KafkaOrderProducer kafkaOrderProducer;
@@ -25,12 +19,9 @@ public class KitchenOrderService {
    
     public void createKitchenOrderAndSendItBackToOrderService(Order order) {
         try {
-            KitchenOrder kitchenOrder = orderToKitchenOrder(
-                    kitchenKafkaConsumer.consumePreorder(order)
-            );
-            addKitchenOrder(kitchenOrder);
+            Order kitchenOrder = kitchenKafkaConsumer.consumePreorder(order);
             pause();
-            order.setStatus(findById(kitchenOrder.getId()).getStatus());
+            updateToCooked(kitchenOrder);
             kafkaOrderProducer.sendCookedOrder(order);
         } catch (Exception e) {
             order.setStatus(Status.CANCELED);
@@ -39,25 +30,9 @@ public class KitchenOrderService {
         }
     }
 
-    public void addKitchenOrder(KitchenOrder kitchenOrder) {
-        store.save(kitchenOrder);
+    public void updateToCooked(Order order) {
+        order.setStatus(Status.COOKED);
     }
-
-    public KitchenOrder findById(int id) {
-        return store.findById(id).orElseThrow(
-                () -> new MongoException(
-                        String.format("Order with id %s not found!", id)
-                )
-        );
-    }
-
-    private KitchenOrder orderToKitchenOrder(Order order) {
-        KitchenOrder kitchenOrder = new KitchenOrder();
-        kitchenOrder.setId(order.getId());
-        kitchenOrder.setDishes(new ArrayList<>(order.getDishList()));
-        return kitchenOrder;
-    }
-
     private void pause() {
         try {
             Thread.sleep(6000);
