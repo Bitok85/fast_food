@@ -24,8 +24,16 @@ public class Authority {
     @NotEmpty
     private String authority;
 
-    @ToString.Exclude
     @OneToMany(mappedBy = "authority", cascade = CascadeType.ALL)
     private Set<Customer> customers = new HashSet<>();
+
+    @OneToMany(mappedBy = "authority", cascade = CascadeType.ALL)
+    private Set<Customer> admins = new HashSet<>();
+
+    @OneToMany(mappedBy = "authority", cascade = CascadeType.ALL)
+    private Set<Customer> couriers = new HashSet<>();
+
+    @OneToMany(mappedBy = "authority", cascade = CascadeType.ALL)
+    private Set<Cook> cooks = new HashSet<>();
 
 }

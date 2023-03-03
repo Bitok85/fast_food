@@ -10,7 +10,7 @@
     <url>http://job4j.ru</url>
 
     <modules>
-        <module>admin</module>
+        <module>user</module>
         <module>delivery</module>
         <module>dish</module>
         <module>domain</module>

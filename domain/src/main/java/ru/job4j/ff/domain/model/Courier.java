@@ -33,4 +33,8 @@ public class Courier {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "courier")
     private Set<Order> orders = new HashSet<>();
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "authority_id", referencedColumnName = "id")
+    private Authority authority;
+
 }

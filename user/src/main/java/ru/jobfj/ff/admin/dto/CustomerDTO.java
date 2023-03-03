@@ -1,4 +1,4 @@
-package ru.job4j.ff.customer.dto;
+package ru.jobfj.ff.admin.dto;
 
 
 import lombok.Data;

@@ -2,9 +2,13 @@ package ru.job4j.ff.domain.model;
 
 public enum Status {
     CREATED,
+    PAYMENT_WAITING,
+    PAYED,
+    COOKING,
     COOKED,
-    DELIVERY,
-    PAID,
+    SENT_TO_DELIVERY,
+    DELIVERING,
+    DELIVERED,
     CANCELED,
     COMPLETED
 }

@@ -4,3 +4,6 @@ CREATE TABLE IF NOT EXISTS couriers (
     surname TEXT NOT NULL,
     phone_number INT NOT NULL UNIQUE
 );
+
+ALTER TABLE couriers ADD authority_id INT REFERENCES authorities(id);
+

@@ -10,13 +10,13 @@ import javax.persistence.*;
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-@Table(name = "admins")
-public class Admin {
+@Table(name = "cooks")
+public class Cook {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
-    int id;
+    private int id;
 
     private String login;
     private String password;
@@ -24,5 +24,4 @@ public class Admin {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "authority_id", referencedColumnName = "id")
     private Authority authority;
-
 }
