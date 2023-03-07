@@ -1,4 +1,4 @@
-package ru.job4j.ff.delivery.dto;
+package ru.jobfj.ff.admin.dto;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

@@ -3,10 +3,8 @@ package ru.job4j.ff.order.dto;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import ru.job4j.ff.delivery.dto.CourierDTO;
 import ru.job4j.ff.dish.dto.DishDTO;
 import ru.job4j.ff.domain.model.Status;
-import ru.job4j.ff.customer.dto.CustomerDTO;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
@@ -33,9 +31,9 @@ public class OrderDTO {
 
     @EqualsAndHashCode.Include
     @NotNull
-    private CustomerDTO customerDTO;
+    private int customerId;
 
-    private CourierDTO courierDTO;
+    private int courierId;
 
     @NotNull
     private Status status;

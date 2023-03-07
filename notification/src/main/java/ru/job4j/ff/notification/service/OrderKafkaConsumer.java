@@ -13,7 +13,7 @@ public class OrderKafkaConsumer {
 
     private final NotificationService notificationService;
 
-    @KafkaListener(topics = "newOrder", groupId = "fastFood")
+    @KafkaListener(topics = "notificationOrder", groupId = "fastFood")
     public void consumeOrderAndCreateNotification(Order order) {
         Notification notification = Notification.builder()
                 .orderNumber(order.getId())

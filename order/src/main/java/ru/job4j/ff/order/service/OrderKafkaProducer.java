@@ -10,7 +10,7 @@ import ru.job4j.ff.domain.model.Order;
 @Service
 public class OrderKafkaProducer {
 
-    private KafkaTemplate<String, Order> orderKafkaTemplate;
+    private final KafkaTemplate<String, Order> orderKafkaTemplate;
 
     public OrderKafkaProducer(KafkaTemplate<String, Order> orderKafkaTemplate) {
         this.orderKafkaTemplate = orderKafkaTemplate;
@@ -19,15 +19,15 @@ public class OrderKafkaProducer {
     public void sendOrderToNotification(Order order) {
         Message<Order> message = MessageBuilder
                 .withPayload(order)
-                .setHeader(KafkaHeaders.TOPIC, "newOrder")
+                .setHeader(KafkaHeaders.TOPIC, "notificationOrder")
                 .build();
         orderKafkaTemplate.send(message);
     }
 
-    public void sendOrderToKitchen(Order order) {
+    public void sendOrderToPayment(Order order) {
         Message<Order> message = MessageBuilder
                 .withPayload(order)
-                .setHeader(KafkaHeaders.TOPIC, "preorder")
+                .setHeader(KafkaHeaders.TOPIC, "newOrder")
                 .build();
         orderKafkaTemplate.send(message);
     }

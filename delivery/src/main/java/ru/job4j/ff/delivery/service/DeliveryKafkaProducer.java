@@ -1,4 +1,4 @@
-package ru.job4j.ff.kitchen.service;
+package ru.job4j.ff.delivery.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -10,23 +10,16 @@ import ru.job4j.ff.domain.model.Order;
 
 @Service
 @RequiredArgsConstructor
-public class KafkaOrderProducer {
+public class DeliveryKafkaProducer {
 
-    private KafkaTemplate<Order, String> kafkaTemplate;
+    private final KafkaTemplate<Order, String> kafkaTemplate;
 
-    public void sendCookedOrder(Order order) {
-        Message<Order> message = MessageBuilder
-                .withPayload(order)
-                .setHeader(KafkaHeaders.TOPIC, "cookedOrder")
-                .build();
-        kafkaTemplate.send(message);
-    }
-
-    public void sendCanceledOrder(Order order) {
+    public void sendDeliveringOrder(Order order) {
         Message<Order> message = MessageBuilder
                 .withPayload(order)
                 .setHeader(KafkaHeaders.TOPIC, "notificationOrder")
                 .build();
         kafkaTemplate.send(message);
     }
+
 }

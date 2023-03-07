@@ -13,4 +13,9 @@ public class KitchenKafkaTopicConfig {
         return TopicBuilder.name("cookedOrder")
                 .build();
     }
+    @Bean
+    public NewTopic notificationOrder() {
+        return TopicBuilder.name("notificationOrder")
+                .build();
+    }
 }
